@@ -23,6 +23,7 @@ before_action :logged_in?
     @attraction = Attraction.find(params[:id])
     if @attraction.save
       @attraction.update(attraction_params)
+      redirect_to attraction_path
     else
       redirect_to edit_attraction_path
     end

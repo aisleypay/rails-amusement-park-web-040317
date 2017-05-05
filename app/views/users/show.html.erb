@@ -2,15 +2,53 @@
   <%= @message %>
 <% end %>
 
-<h2>Name: <%= @user.name %></h2>
-<% if @user.admin %>
-<%= 'ADMIN' %>
-<% end %>
+<style>
 
-<h2>Tickets: <%= @user.tickets %></h2>
-<h2>Mood: <%= @user.mood %></h2>
-<h2>Height: <%= @user.height %> inches</h2>
-<%= link_to 'Edit', edit_user_path %>
-<%= link_to 'See attractions', attractions_path %>
+.container {
 
-<li><%= link_to "Log Out", logout_path, method: :delete %></li>
+}
+
+.image, .table_fun {
+  padding: 20px;
+  display: inline-block;
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  vertical-align: middle;
+  margin: 5px;
+}
+
+.image {
+  height: 50%;
+  width: 50%;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+
+.table_fun {
+  height: 370px;
+  text-align: left;
+}
+</style>
+
+<div class="container">
+  <div class="image">
+    <img src="http://cdn-image.travelandleisure.com/sites/default/files/styles/tnl_redesign_article_landing_page/public/disney-auction-park1215.jpg" style="width: 100%; height: 100%;"/>
+  </div>
+
+  <div class="table_fun">
+
+    <% if @user.admin %>
+    <h3><%= 'ADMIN' %></h3>
+    <% end %>
+
+    <p><strong>Name: </strong><%= @user.name %></p>
+    <p><strong>Tickets: </strong><%= @user.tickets %></p>
+    <p><strong>Mood: </strong><%= @user.mood %></p>
+    <p><strong>Height: </strong><%= @user.height %></p>
+
+    <%= link_to 'Edit', edit_user_path %><br>
+    <%= link_to 'See attractions', attractions_path %><br>
+    <%= link_to "Log Out", logout_path, method: :delete %>
+  </div>
+</div>
