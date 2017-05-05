@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+before_action :logged_in?, except: [:new, :create]
+
   def new
     @user = User.new
   end
@@ -14,11 +16,19 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.save
+      @user.update(user_params)
+      redirect_to user_path
+    else
+      redirect_to edit_user_path
+    end
   end
 
   def show
-    # binding.pry
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
+    @message = params[:message] if params[:message]
+    @message ||= false
   end
 
   private

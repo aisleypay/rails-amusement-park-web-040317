@@ -1,6 +1,7 @@
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-  <input name=name>
-  <input type=submit value='login'>
+  <input name='user[name]'>
+  <input name='user[password]'>
+  <input type=submit value='Sign In'>
 <% end %>
 
 <%= link_to 'Back', root_path %>
